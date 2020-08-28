@@ -1,0 +1,95 @@
+{% extends 'base.html'%}
+{%block content%}
+<h3>New Tickets</h3>
+<table class='table table-hover'>
+    <thead>
+        <tr>
+            <th scope='col'>#</th>
+            <th scope='col'>Title</th>
+            <th scope='col'>Assigned To</th>
+            <th scope='col'>Reported By</th>
+            <th scope='col'>Ticket Age</th>
+        </tr>
+    </thead>
+    <tbody>
+        {%for ticket in new_tickets%}
+        <tr>
+            <th scope='row'>{{ticket.id}}</th>
+            <td><a href="/ticket_view/{{ticket.id}}/">{{ticket.id}}</a></td>
+            <td><a href="/user_view/{{ticket.assigned_to.id}}/">{{ticket.assigned_to}}</a></td>
+            <td><a href="/user_view/{{ticket.filed_by.id}}/">{{ticket.filed_by}}</a></td>
+            <td>{{ticket.ticket_age}} day(s)</td>
+        </tr>
+        {%endfor%}
+    </tbody>
+</table>
+<h3>In Progress Tickets</h3>
+<table class='table table-hover'>
+    <thead>
+        <tr>
+            <th scope='col'>#</th>
+            <th scope='col'>Title</th>
+            <th scope='col'>Assigned To</th>
+            <th scope='col'>Reported By</th>
+            <th scope='col'>Ticket Age</th>
+        </tr>
+    </thead>
+    <tbody>
+        {%for ticket in in_progress_tickets%}
+        <tr>
+            <th scope='row'>{{ticket.id}}</th>
+            <td><a href="/ticket_view/{{ticket.id}}/">{{ticket.id}}</a></td>
+            <td><a href="/user_view/{{ticket.assigned_to.id}}/">{{ticket.assigned_to}}</a></td>
+            <td><a href="/user_view/{{ticket.filed_by.id}}/">{{ticket.filed_by}}</a></td>
+            <td>{{ticket.ticket_age}} day(s)</td>
+        </tr>
+        {%endfor%}
+    </tbody>
+</table>
+<h3>Completed Tickets</h3>
+<table class='table table-hover'>
+    <thead>
+        <tr>
+            <th scope='col'>#</th>
+            <th scope='col'>Title</th>
+            <th scope='col'>Assigned To</th>
+            <th scope='col'>Reported By</th>
+            <th scope='col'>Ticket Age</th>
+        </tr>
+    </thead>
+    <tbody>
+        {%for ticket in done_tickets%}
+        <tr>
+            <th scope='row'>{{ticket.id}}</th>
+            <td><a href="/ticket_view/{{ticket.id}}/">{{ticket.id}}</a></td>
+            <td><a href="/user_view/{{ticket.assigned_to.id}}/">{{ticket.assigned_to}}</a></td>
+            <td><a href="/user_view/{{ticket.filed_by.id}}/">{{ticket.filed_by}}</a></td>
+            <td>{{ticket.ticket_age}} day(s)</td>
+        </tr>
+        {%endfor%}
+    </tbody>
+</table>
+<h3>Invalid Tickets</h3>
+<table class='table table-hover'>
+    <thead>
+        <tr>
+            <th scope='col'>#</th>
+            <th scope='col'>Title</th>
+            <th scope='col'>Assigned To</th>
+            <th scope='col'>Reported By</th>
+            <th scope='col'>Ticket Age</th>
+        </tr>
+    </thead>
+    <tbody>
+        {%for ticket in invalid_tickets%}
+        <tr>
+            <th scope='row'>{{ticket.id}}</th>
+            <td><a href="/ticket_view/{{ticket.id}}/">{{ticket.id}}</a></td>
+            <td><a href="/user_view/{{ticket.assigned_to.id}}/">{{ticket.assigned_to}}</a></td>
+            <td><a href="/user_view/{{ticket.filed_by.id}}/">{{ticket.filed_by}}</a></td>
+            <td>{{ticket.ticket_age}} day(s)</td>
+        </tr>
+        {%endfor%}
+    </tbody>
+</table>
+{%endblock%}

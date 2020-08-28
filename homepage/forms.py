@@ -3,7 +3,7 @@ from django import forms
 
 class AddTicket(forms.Form):
     title = forms.CharField(max_length=50)
-    description = forms.CharField(widget=forms.TextArea)
+    description = forms.CharField(widget=forms.Textarea)
 
 
 class LoginForm(forms.Form):
