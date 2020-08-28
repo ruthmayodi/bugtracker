@@ -26,15 +26,15 @@ def index_view(request):
 
 @login_required
 def ticket_view(request, ticket_id):
-    data = Bugs.object.filter(id=ticket_id).first()
+    data = Bugs.objects.filter(id=ticket_id).first()
     return render(request, 'ticket_view.html', {'data': data})
 
 @login_required
 def user_view(request, user_id):
-    new_tickets = Bugs.objects.filter(status=Bugs.Status.NEW, id=user_id)
-    in_progress_tickets = Bugs.objects.filter(status=Bugs.Status.IN_PROGRESS, id=user_id)
-    done_tickets = Bugs.objects.filter(status=Bugs.Status.DONE, id=user_id)
-    invalid_tickets = Bugs.objects.filter(status=Bugs.Status.INVALID, id=user_id)
+    new_tickets = Bugs.objects.filter(status=Bugs.Status.NEW, filed_by=user_id)
+    in_progress_tickets = Bugs.objects.filter(status=Bugs.Status.IN_PROGRESS, assigned_to=user_id)
+    done_tickets = Bugs.objects.filter(status=Bugs.Status.DONE, completed_by=user_id)
+    invalid_tickets = Bugs.objects.filter(status=Bugs.Status.INVALID, filed_by=user_id)
     user_info = MyUser.objects.filter(id=user_id).first()
     return render(
         request, 
@@ -87,8 +87,8 @@ def edit_ticket_view(request, ticket_id):
 def assign_ticket_view(request, ticket_id):
     ticket = Bugs.objects.get(id=ticket_id)
     ticket.status = Bugs.Status.IN_PROGRESS
-    ticket.completed_by = request.user
-    ticket.assigned_to = None
+    ticket.completed_by = None
+    ticket.assigned_to = request.user
     ticket.save()
     return HttpResponseRedirect(reverse('ticketView', args=[ticket_id]))
 

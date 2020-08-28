@@ -15,7 +15,7 @@
         {%for ticket in new_tickets%}
         <tr>
             <th scope='row'>{{ticket.id}}</th>
-            <td><a href="/ticket_view/{{ticket.id}}/">{{ticket.id}}</a></td>
+            <td><a href="/ticket_view/{{ticket.id}}/">{{ticket.title}}</a></td>
             <td><a href="/user_view/{{ticket.assigned_to.id}}/">{{ticket.assigned_to}}</a></td>
             <td><a href="/user_view/{{ticket.filed_by.id}}/">{{ticket.filed_by}}</a></td>
             <td>{{ticket.ticket_age}} day(s)</td>
@@ -38,7 +38,7 @@
         {%for ticket in in_progress_tickets%}
         <tr>
             <th scope='row'>{{ticket.id}}</th>
-            <td><a href="/ticket_view/{{ticket.id}}/">{{ticket.id}}</a></td>
+            <td><a href="/ticket_view/{{ticket.id}}/">{{ticket.title}}</a></td>
             <td><a href="/user_view/{{ticket.assigned_to.id}}/">{{ticket.assigned_to}}</a></td>
             <td><a href="/user_view/{{ticket.filed_by.id}}/">{{ticket.filed_by}}</a></td>
             <td>{{ticket.ticket_age}} day(s)</td>
@@ -61,7 +61,7 @@
         {%for ticket in done_tickets%}
         <tr>
             <th scope='row'>{{ticket.id}}</th>
-            <td><a href="/ticket_view/{{ticket.id}}/">{{ticket.id}}</a></td>
+            <td><a href="/ticket_view/{{ticket.id}}/">{{ticket.title}}</a></td>
             <td><a href="/user_view/{{ticket.assigned_to.id}}/">{{ticket.assigned_to}}</a></td>
             <td><a href="/user_view/{{ticket.filed_by.id}}/">{{ticket.filed_by}}</a></td>
             <td>{{ticket.ticket_age}} day(s)</td>
@@ -84,7 +84,7 @@
         {%for ticket in invalid_tickets%}
         <tr>
             <th scope='row'>{{ticket.id}}</th>
-            <td><a href="/ticket_view/{{ticket.id}}/">{{ticket.id}}</a></td>
+            <td><a href="/ticket_view/{{ticket.id}}/">{{ticket.title}}</a></td>
             <td><a href="/user_view/{{ticket.assigned_to.id}}/">{{ticket.assigned_to}}</a></td>
             <td><a href="/user_view/{{ticket.filed_by.id}}/">{{ticket.filed_by}}</a></td>
             <td>{{ticket.ticket_age}} day(s)</td>
